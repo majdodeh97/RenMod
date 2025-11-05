@@ -30,8 +30,7 @@ public class CarbonReserve extends BaseCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int amountToIncrease = (int)(CarbonManager.getMaxCarbon() * (customVar(CustomNames.Effect1)/100.0));
-        CarbonManager.addCurrentCarbon(amountToIncrease);
+        CarbonManager.restoreCarbon(customVar(CustomNames.Effect1));
     }
 
     public AbstractCard makeCopy() {

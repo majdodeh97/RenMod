@@ -49,13 +49,9 @@ Cards that exhaust other cards
 
 Maybe make scraps a starter card to remove confusion about cards that scale but dont consume?
 built in call to applyPowers. Call it on all cards in your hand whenever carbon changes
-
-Respite is too weak
-Make cost at the top right. Swap words. Make consume at the end
-Domain expansion buff
-maybe round up lmao
 add block cards lmao
-terror make rare
-Scraps needs to have similar percentage per energy cost
-remove quote from scry card
 Art for blood carbon, scraps, and tempostrike and domain expansion
+
+Balances keep an eye out:
+Respite
+Domain expansion

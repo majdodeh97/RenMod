@@ -9,10 +9,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
-import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class RensDagger extends BaseCard {
+public class RensDagger extends BaseCarbonCard {
 
     public static final String ID = makeID("RensDagger");
     private static final CardStats info = new CardStats(
@@ -29,25 +29,26 @@ public class RensDagger extends BaseCard {
     public RensDagger() {
         super(ID, info, true);
 
-        this.setCustomVar(CustomNames.Cost, COST_PERCENT);
         this.setCustomVar(CustomNames.Effect1, DAMAGE_PERCENT, DAMAGE_PERCENT_UPGRADE);
         this.baseDamage = 0;
+        this.setCarbonCost(COST_PERCENT);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
-        int carbonCost = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Cost));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
         this.calculateCardDamage(m);
         this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        CarbonManager.removeCurrentCarbon(carbonCost);
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+
+        this.consumeCarbonCost();
+
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         this.rawDescription = cardStrings.DESCRIPTION;
         this.initializeDescription();
     }
 
     public void applyPowers() {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];

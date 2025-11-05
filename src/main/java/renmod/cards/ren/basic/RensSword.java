@@ -39,20 +39,20 @@ public class RensSword extends BaseCarbonCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
         this.calculateCardDamage(m);
         this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
         this.consumeCarbonCost();
 
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         this.rawDescription = cardStrings.DESCRIPTION;
         this.initializeDescription();
     }
 
     public void applyPowers() {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];

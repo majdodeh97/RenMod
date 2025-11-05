@@ -12,7 +12,7 @@ public abstract class BaseCarbonCard extends BaseCard {
 
     public int carbonCost = 0;
     public int carbonCostUpgrade = 0;
-    public boolean isCarbonCostPercentage = true;
+    public boolean isCarbonCostFlat = false;
 
     public BaseCarbonCard(String ID, CardStats info, boolean upgradesDescription){
         super(ID, info, upgradesDescription);
@@ -29,29 +29,18 @@ public abstract class BaseCarbonCard extends BaseCard {
         setCarbonCost(carbonCost, 0);
     }
 
-    public void setIsCarbonCostPercentage(boolean isCarbonCostPercentage){
-        this.isCarbonCostPercentage = isCarbonCostPercentage;
+    public void setIsCarbonCostFlat(boolean isCarbonCostFlat){
+        this.isCarbonCostFlat = isCarbonCostFlat;
     }
 
     public int consumeCarbonCost(){
-        int initialCarbonCost = this.carbonCost;
-
-        if(this.isCarbonCostPercentage){
-            initialCarbonCost = CarbonManager.getCurrentCarbonPercent(this.carbonCost);
-        }
-
-        int trueCarbonCost = Math.min(CarbonManager.getCurrentCarbon(), initialCarbonCost);
-
-        if(trueCarbonCost != 0)
-            CarbonManager.removeCurrentCarbon(trueCarbonCost);
-
-        return trueCarbonCost;
+        return CarbonManager.consumeCarbon(this.carbonCost, this.isCarbonCostFlat);
     }
 
     public String getCostText(){
         return this.upgraded ?
-                (this.carbonCost + this.carbonCostUpgrade) + (this.isCarbonCostPercentage ? "%" : "") :
-                this.carbonCost + (this.isCarbonCostPercentage ? "%" : "");
+                (this.carbonCost + this.carbonCostUpgrade) + (this.isCarbonCostFlat ? "" : "%") :
+                this.carbonCost + (this.isCarbonCostFlat ? "" : "%");
     }
 
     public Color getTextColor(){

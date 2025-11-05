@@ -27,7 +27,7 @@ public class Reload extends BaseCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        CarbonManager.addCurrentCarbon(this.magicNumber);
+        CarbonManager.restoreCarbon(this.magicNumber, true);
     }
 
     public AbstractCard makeCopy() {

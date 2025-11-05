@@ -8,9 +8,10 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Regenerate extends BaseCard {
+public class Regenerate extends BaseCarbonCard {
 
     public static final String ID = makeID("Regenerate");
     private static final CardStats info = new CardStats(
@@ -31,16 +32,17 @@ public class Regenerate extends BaseCard {
         setCustomVar(CustomNames.Cost, COST_PERCENT);
         setCustomVar(CustomNames.Effect1, HealPercentAmount, HealPercentAmountUpgrade);
         setExhaust(true);
+        setCarbonCost(COST_PERCENT);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int carbonCost = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Cost));
-        int healAmount = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        int healAmount = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
-        CarbonManager.removeCurrentCarbon(carbonCost);
+        this.consumeCarbonCost();
+
         this.addToBot(new HealAction(p, p, healAmount));
 
-        healAmount = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        healAmount = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + createExtraDescription(healAmount);
@@ -48,7 +50,7 @@ public class Regenerate extends BaseCard {
     }
 
     public void applyPowers() {
-        int healAmount = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        int healAmount = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;

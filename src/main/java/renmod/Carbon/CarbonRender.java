@@ -74,7 +74,7 @@ public class CarbonRender {
 
             String tip = cachedContagion ?
                     "You have Contagion. NL NL Carbon Capacity is increased by " + CarbonManager.CONTAGION_PERCENT_INCREASE + "%. NL NL Start each combat with max Carbon. NL NL Carbon regeneration is disabled." :
-                    "Some cards use Carbon. NL NL Gain Carbon Capacity by killing enemies: NL Basic: " + CarbonManager.MONSTER_INCREASE + " Carbon Capacity. NL Elite: " + CarbonManager.ELITE_INCREASE + " Carbon Capacity. NL Boss: " + CarbonManager.BOSS_INCREASE + " Carbon Capacity. NL NL Restore " + CarbonManager.RESTORE_PERCENT + "% of your Carbon Capacity every turn.";
+                    "Some cards use Carbon. NL NL Gain Carbon Capacity by killing enemies: NL Basic: " + CarbonManager.MONSTER_INCREASE + " Carbon Capacity. NL Elite: " + CarbonManager.ELITE_INCREASE + " Carbon Capacity. NL Boss: " + CarbonManager.BOSS_INCREASE + " Carbon Capacity. NL NL Restore " + CarbonManager.PASSIVE_RESTORE_PERCENT + "% of your Carbon Capacity every turn.";
 
             if (tipHitbox.hovered)
                 TipHelper.renderGenericTip(60.0F * Settings.scale, 450.0F * Settings.scale, "Carbon", tip);

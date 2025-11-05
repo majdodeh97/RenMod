@@ -22,6 +22,7 @@ import renmod.cards.ren.basic.RensSword;
 import renmod.cards.ren.common.Reload;
 import renmod.cards.ren.common.VulnerableSpot;
 import renmod.cards.ren.common.WeakSpot;
+import renmod.cards.ren.rare.Terror;
 import renmod.cards.ren.uncommon.*;
 import renmod.stances.Graphite;
 import renmod.relics.BaseRelic;

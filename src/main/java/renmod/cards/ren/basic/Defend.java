@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.Carbon.CarbonManager;
+import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
 import renmod.util.CardStats;
@@ -19,16 +20,18 @@ public class Defend extends BaseCard {
             CardTarget.SELF,
             1
     );
+    private static final int RESTORE_PERCENT = 20;
 
     public Defend() {
         super(ID, info, false);
 
         setBlock(5, 3);
+        this.setCustomVar(CustomNames.Effect1, RESTORE_PERCENT);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, this.block));
-        CarbonManager.triggerCarbonRestore();
+        CarbonManager.restoreCarbon(customVar(CustomNames.Effect1));
     }
 
     public AbstractCard makeCopy() {

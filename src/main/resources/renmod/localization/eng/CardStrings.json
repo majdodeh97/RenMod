@@ -5,7 +5,7 @@
   },
   "${modID}:Defend": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block. Trigger your passive ${modID}:Carbon regeneration."
+    "DESCRIPTION": "Gain !B! Block. Restore !${modID}:Effect1!% ${modID}:Carbon_Capacity."
   },
   "${modID}:RensSword": {
     "NAME": "Ren's Sword",
@@ -27,17 +27,16 @@
   },
   "${modID}:RensDagger": {
     "NAME": "Ren's Dagger",
-    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage.",
+    "DESCRIPTION": "Deal !${modID}:Effect1!% ${modID}:Carbon damage.",
     "EXTENDED_DESCRIPTION": [
       " NL (Deal !D! damage)"
     ]
   },
   "${modID}:Respite": {
     "NAME": "Respite",
-    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Draw a card for each !M! ${modID}:Carbon consumed.",
+    "DESCRIPTION": "Draw 1 card. Draw an additional card for each !M! ${modID}:Carbon this card costs.",
     "EXTENDED_DESCRIPTION": [
-      " NL (Consume ",
-      " ${modID}:Carbon. Draw ",
+      " NL (Draw ",
       " card(s))"
     ]
   },
@@ -68,7 +67,7 @@
   },
   "${modID}:Regenerate": {
     "NAME": "Regenerate",
-    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Heal for !${modID}:Effect1!% ${modID}:Carbon. NL Exhaust",
+    "DESCRIPTION": "Heal for !${modID}:Effect1!% ${modID}:Carbon. NL Exhaust",
     "EXTENDED_DESCRIPTION": [
       " NL (Heal ",
       " HP)"
@@ -90,7 +89,7 @@
   },
   "${modID}:TempoStrike": {
     "NAME": "Tempo Strike",
-    "DESCRIPTION": "{@@}Consume !${modID}:Cost!% ${modID}:Carbon. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL Draw !M! card{!M!|>1=s}",
+    "DESCRIPTION": "{@@}Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL Draw !M! card{!M!|>1=s}",
     "EXTENDED_DESCRIPTION": [
       " NL (Deal !D! damage)"
     ]
@@ -124,7 +123,7 @@
   },
   "${modID}:BloodAttack": {
     "NAME": "Blood Attack",
-    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL Lose !M! HP.",
+    "DESCRIPTION": "Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL Lose !M! HP.",
     "EXTENDED_DESCRIPTION": [
       " NL (Deal !D! damage)"
     ]
@@ -135,7 +134,7 @@
   },
   "${modID}:FutureSight": {
     "NAME": "Future Sight",
-    "DESCRIPTION": "{@@}Consume !${modID}:Cost! ${modID}:Carbon. NL Scry for each ${modID}:Carbon consumed. NL Draw !M! card{!M!|>1=s}.\""
+    "DESCRIPTION": "{@@}Scry 1 for each ${modID}:Carbon this card costs. NL Draw !M! card{!M!|>1=s}."
   },
   "${modID}:CarbonReserve": {
     "NAME": "Carbon Reserve",

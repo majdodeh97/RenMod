@@ -32,7 +32,7 @@ public class RenRelic extends BaseRelic implements ClickableRelic {
             return;
 
         this.flash();
-        CarbonManager.setCurrentCarbon(CarbonManager.getMaxCarbon());
+        CarbonManager.restoreCarbon(100);
         this.usedThisCombat = true;
 
         for (AbstractCard c : AbstractDungeon.player.hand.group){

@@ -34,21 +34,21 @@ public class RensShield extends BaseCarbonCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.baseBlock = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
         this.calculateCardDamage(m);
         this.addToBot(new GainBlockAction(p, p, this.block));
 
         this.consumeCarbonCost();
 
-        this.baseBlock = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         this.rawDescription = cardStrings.DESCRIPTION;
         this.initializeDescription();
 
     }
 
     public void applyPowers() {
-        this.baseBlock = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];

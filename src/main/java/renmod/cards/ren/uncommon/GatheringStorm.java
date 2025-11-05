@@ -22,9 +22,9 @@ public class GatheringStorm extends BaseCard {
             CardTarget.ENEMY,
             2
     );
-    private static final int BASE_PERCENT = 20;
-    private static final int PERCENT_INCREASE_PER_RETAIN = 5;
-    private static final int PERCENT_INCREASE_PER_RETAIN_UPGRADE = 5;
+    private static final int BASE_PERCENT = 30;
+    private static final int PERCENT_INCREASE_PER_RETAIN = 10;
+    private static final int PERCENT_INCREASE_PER_RETAIN_UPGRADE = 10;
 
     public GatheringStorm() {
         super(ID, info, false);
@@ -36,7 +36,7 @@ public class GatheringStorm extends BaseCard {
 
     public void onRetained() {
         setCustomVar(CustomNames.Effect1, customVar(CustomNames.Effect1) + customVar(CustomNames.Effect2));
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(customVar(CustomNames.Effect1));
         this.upgradedDamage = true;
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
@@ -44,17 +44,16 @@ public class GatheringStorm extends BaseCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(customVar(CustomNames.Effect1));
         this.calculateCardDamage(m);
         this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        CarbonManager.removeCurrentCarbon(this.baseDamage);
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(customVar(CustomNames.Effect1));
         this.rawDescription = cardStrings.DESCRIPTION;
         this.initializeDescription();
     }
 
     public void applyPowers() {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(customVar(CustomNames.Effect1));
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];

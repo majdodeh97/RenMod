@@ -1,4 +1,4 @@
-package renmod.cards.ren.uncommon;
+package renmod.cards.ren.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,7 +16,7 @@ public class Terror extends BaseCard {
     private static final CardStats info = new CardStats(
             RenCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.UNCOMMON,
+            CardRarity.RARE,
             CardTarget.ENEMY,
             1
     );

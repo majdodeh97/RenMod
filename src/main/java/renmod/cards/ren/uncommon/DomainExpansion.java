@@ -19,8 +19,8 @@ public class DomainExpansion extends BaseCard {
             CardTarget.SELF,
             1
     );
-    private static int POWER_AMOUNT = 5;
-    private static int POWER_AMOUNT_UPGRADE = 5;
+    private static int POWER_AMOUNT = 10;
+    private static int POWER_AMOUNT_UPGRADE = 10;
 
     public DomainExpansion() {
         super(ID, info, true);

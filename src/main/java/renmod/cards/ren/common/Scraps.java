@@ -22,7 +22,7 @@ public class Scraps extends BaseCard {
             CardTarget.ENEMY,
             1
     );
-    private static final int DAMAGE_PERCENT = 20;
+    private static final int DAMAGE_PERCENT = 30;
     private static final int DAMAGE_PERCENT_UPGRADE = 10;
 
     public Scraps() {
@@ -33,7 +33,7 @@ public class Scraps extends BaseCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         this.calculateCardDamage(m);
         this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         this.rawDescription = cardStrings.DESCRIPTION;
@@ -41,7 +41,7 @@ public class Scraps extends BaseCard {
     }
 
     public void applyPowers() {
-        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];

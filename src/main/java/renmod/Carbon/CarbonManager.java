@@ -14,7 +14,7 @@ import java.util.List;
 public class CarbonManager {
 
     public static final int BASE_CARBON = 10;
-    public static final int RESTORE_PERCENT = 20; // Also change hardcoded value in Keywords.json
+    public static final int PASSIVE_RESTORE_PERCENT = 20; // Also change hardcoded value in Keywords.json
     public static final int CONTAGION_PERCENT_INCREASE = 50; // Also change hardcoded value in Keywords.json
 
     public static final int ROOM_INCREASE = 1; // Also change hardcoded text in Keywords.json and CarbonRender.java
@@ -24,19 +24,61 @@ public class CarbonManager {
 
     private static final List<CarbonDecreasedListener> carbonDecreasedListeners = new ArrayList<>();
 
-    // Punlic
+    // Public
 
-    public static void triggerCarbonRestore(){
-        int amountToIncrease = (int)(getMaxCarbon() * (RESTORE_PERCENT/100.0));
+    public static int restoreCarbon(int amount, boolean flat){
+        int initialValue = getCurrentCarbon();
 
-        if(amountToIncrease != 0){
+        if(flat){
+            addCurrentCarbon(amount);
+        } else {
+            int amountToIncrease = (int)(getMaxCarbon() * (amount/100.0));
             addCurrentCarbon(amountToIncrease);
         }
+
+        return getCurrentCarbon() - initialValue;
+    }
+
+    public static int restoreCarbon(int amount){
+        return restoreCarbon(amount, false);
+    }
+
+    public static int consumeCarbon(int amount, boolean flat){
+        int initialValue = getCurrentCarbon();
+
+        if(flat){
+            removeCurrentCarbon(amount);
+        } else {
+            int amountToConsume = getCurrentCarbonPercent(amount);
+            removeCurrentCarbon(amountToConsume);
+        }
+
+        return initialValue - getCurrentCarbon();
+    }
+
+    public static int consumeCarbon(int amount){
+        return consumeCarbon(amount, false);
+    }
+
+    public static int getConsumeCarbonAmount(int amount, boolean flat){
+        int initialCarbonCost = amount;
+
+        if(!flat){
+            initialCarbonCost = getCurrentCarbonPercent(amount);
+        }
+
+        int trueCarbonCost = Math.min(CarbonManager.getCurrentCarbon(), initialCarbonCost);
+
+        return trueCarbonCost;
+    }
+
+    public static int getConsumeCarbonAmount(int amount){
+        return getConsumeCarbonAmount(amount, false);
     }
 
     // Max Carbon
 
-    public static void addMaxCarbon(int value){
+    private static void addMaxCarbon(int value){
         if(isRenCharacter()) {
             int intialValue = getMaxCarbon(true);
 
@@ -44,13 +86,13 @@ public class CarbonManager {
         }
     }
 
-    public static void setMaxCarbon(int value){
+    private static void setMaxCarbon(int value){
         if(isRenCharacter()){
             MaxCarbon.maxCarbon.set(AbstractDungeon.player, value);
         }
     }
 
-    public static int getMaxCarbon(boolean original){
+    private static int getMaxCarbon(boolean original){
         if(isRenCharacter()){
             if(original)
                 return MaxCarbon.maxCarbon.get(AbstractDungeon.player);
@@ -71,7 +113,7 @@ public class CarbonManager {
 
     // Current Carbon
 
-    public static void addCurrentCarbon(int value, boolean force){
+    private static void addCurrentCarbon(int value, boolean force){
         if(value < 0) {
             BasicMod.logger.log(Level.ERROR, "Adding a negative value for Carbon.");
             return;
@@ -84,11 +126,11 @@ public class CarbonManager {
         }
     }
 
-    public static void addCurrentCarbon(int value){
+    private static void addCurrentCarbon(int value){
         addCurrentCarbon(value, false);
     }
 
-    public static void removeCurrentCarbon(int value){
+    private static void removeCurrentCarbon(int value){
         if(value < 0) {
             BasicMod.logger.log(Level.ERROR, "Removing a negative value for Carbon.");
             return;
@@ -101,7 +143,7 @@ public class CarbonManager {
         }
     }
 
-    public static void setCurrentCarbon(int value, boolean force){
+    private static void setCurrentCarbon(int value, boolean force){
         if(value < 0) {
             BasicMod.logger.log(Level.ERROR, "Setting a negative value for Carbon.");
             return;
@@ -121,7 +163,7 @@ public class CarbonManager {
         }
     }
 
-    public static void setCurrentCarbon(int value){
+    private static void setCurrentCarbon(int value){
         setCurrentCarbon(value, false);
     }
 
@@ -133,7 +175,7 @@ public class CarbonManager {
         }
     }
 
-    public static int getCurrentCarbonPercent(int percentage){
+    private static int getCurrentCarbonPercent(int percentage){
         float decimal = percentage/100.0f;
 
         if(isRenCharacter()){
@@ -146,7 +188,7 @@ public class CarbonManager {
     // Contagion
 
     public static void setContagion(boolean value){
-        if(isRenCharacter()){
+        if(isRenCharacter() && getContagion() != value){
             Contagion.contagion.set(AbstractDungeon.player, value);
 
             if(value){
@@ -170,7 +212,7 @@ public class CarbonManager {
             if(getContagion()){
                 setCurrentCarbon(getMaxCarbon(), true);
             } else {
-                triggerCarbonRestore();
+                restoreCarbon(PASSIVE_RESTORE_PERCENT);
             }
         }
     }

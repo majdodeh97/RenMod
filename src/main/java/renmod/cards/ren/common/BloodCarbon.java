@@ -37,8 +37,7 @@ public class BloodCarbon extends BaseCard {
         this.addToBot(new VFXAction(new OfferingEffect(), 0.2F));
         this.addToBot(new LoseHPAction(p, p, this.magicNumber));
 
-        int amountToIncrease = (int)(CarbonManager.getMaxCarbon() * (customVar(CustomNames.Effect1)/100.0));
-        CarbonManager.addCurrentCarbon(amountToIncrease);
+        CarbonManager.restoreCarbon(customVar(CustomNames.Effect1));
     }
 
     public AbstractCard makeCopy() {

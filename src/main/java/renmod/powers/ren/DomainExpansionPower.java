@@ -22,7 +22,7 @@ public class DomainExpansionPower extends BasePower {
     public void atEndOfTurn(boolean isPlayer) {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flash();
-            int damageAmount = CarbonManager.getCurrentCarbonPercent(this.amount);
+            int damageAmount = CarbonManager.getConsumeCarbonAmount(this.amount);
             this.addToBot(new DamageAllEnemiesAction(null, DamageInfo.createDamageMatrix(damageAmount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
     }

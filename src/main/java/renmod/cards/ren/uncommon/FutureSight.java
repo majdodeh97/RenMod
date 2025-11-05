@@ -9,9 +9,10 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class FutureSight extends BaseCard {
+public class FutureSight extends BaseCarbonCard {
 
     public static final String ID = makeID("FutureSight");
     private static final CardStats info = new CardStats(
@@ -28,14 +29,16 @@ public class FutureSight extends BaseCard {
 
         setMagic(1, 1);
         setCustomVar(CustomNames.Cost, COST_AMOUNT);
+        this.setCarbonCost(COST_AMOUNT);
+        this.setIsCarbonCostFlat(true);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int scryAmount = Math.min(CarbonManager.getCurrentCarbon(), customVar(CustomNames.Cost));
+        int scryAmount = CarbonManager.getConsumeCarbonAmount(customVar(CustomNames.Cost), true);
+
+        this.consumeCarbonCost();
 
         if(scryAmount != 0){
-            CarbonManager.removeCurrentCarbon(scryAmount);
-
             this.addToBot(new ScryAction(scryAmount));
         }
 

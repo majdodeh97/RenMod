@@ -19,7 +19,7 @@ public class SiphonPower extends BasePower {
     }
 
     public void atEndOfRound() {
-        CarbonManager.addCurrentCarbon(this.amount);
+        CarbonManager.restoreCarbon(this.amount, true);
     }
 
     public void updateDescription() {

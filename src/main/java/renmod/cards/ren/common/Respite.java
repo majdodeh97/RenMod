@@ -8,9 +8,10 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Respite extends BaseCard {
+public class Respite extends BaseCarbonCard {
 
     public static final String ID = makeID("Respite");
     private static final CardStats info = new CardStats(
@@ -20,32 +21,33 @@ public class Respite extends BaseCard {
             CardTarget.SELF,
             1
     );
-    private static final int COST_PERCENT = 20;
+    private static final int COST_PERCENT = 40;
 
     public Respite() {
         super(ID, info, false);
 
         this.setCustomVar(CustomNames.Cost, COST_PERCENT);
-        setMagic(10, -5);
+        setMagic(5, -2);
+        setCarbonCost(COST_PERCENT);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int amount = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Cost));
-        int cardDraw = calculateCardDraw(amount);
 
-        CarbonManager.removeCurrentCarbon(amount);
+        int amount = this.consumeCarbonCost();
+        int cardDraw = 1 + calculateCardDraw(amount);
+
         this.addToBot(new DrawCardAction(cardDraw));
         this.rawDescription = cardStrings.DESCRIPTION;
-        this.rawDescription = this.rawDescription + createExtraDescription(amount, cardDraw);
+        this.rawDescription = this.rawDescription + createExtraDescription(cardDraw);
         this.initializeDescription();
     }
 
     public void applyPowers() {
-        int amount = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Cost));
-        int cardDraw = calculateCardDraw(amount);
+        int amount = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Cost));
+        int cardDraw = 1 + calculateCardDraw(amount);
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
-        this.rawDescription = this.rawDescription + createExtraDescription(amount, cardDraw);
+        this.rawDescription = this.rawDescription + createExtraDescription(cardDraw);
         this.initializeDescription();
     }
 
@@ -62,8 +64,8 @@ public class Respite extends BaseCard {
         return (int) Math.floor((amount * 1.0f) / this.magicNumber);
     }
 
-    private String createExtraDescription(int amount, int cardDraw){
+    private String createExtraDescription(int cardDraw){
 
-        return cardStrings.EXTENDED_DESCRIPTION[0] + amount + cardStrings.EXTENDED_DESCRIPTION[1] + cardDraw + cardStrings.EXTENDED_DESCRIPTION[2];
+        return cardStrings.EXTENDED_DESCRIPTION[0] + cardDraw + cardStrings.EXTENDED_DESCRIPTION[2];
     }
 }
