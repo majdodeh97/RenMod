@@ -1,0 +1,9 @@
+{
+  "${modID}:RenRelic": {
+    "NAME": "Carbon Recall",
+    "FLAVOR": "Restore max Carbon.",
+    "DESCRIPTIONS": [
+      "Right click to use. NL NL Usable once per combat. NL NL Restore max #yCarbon."
+    ]
+  }
+}

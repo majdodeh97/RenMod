@@ -1,0 +1,84 @@
+package renmod.cards.ren.uncommon;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.HemokinesisEffect;
+import renmod.Carbon.CarbonManager;
+import renmod.Carbon.CustomNames;
+import renmod.CustomCharacter.RenCharacter;
+import renmod.cards.BaseCard;
+import renmod.util.CardStats;
+
+public class BloodAttack extends BaseCard {
+
+    public static final String ID = makeID("BloodAttack");
+    private static final CardStats info = new CardStats(
+            RenCharacter.Meta.CARD_COLOR,
+            CardType.ATTACK,
+            CardRarity.UNCOMMON,
+            CardTarget.ENEMY,
+            1
+    );
+    private static final int DAMAGE_PERCENT = 120;
+    private static final int DAMAGE_PERCENT_UPGRADE = 20;
+    private static final int COST_PERCENT = 100;
+    private static final int SELF_DAMAGE_AMOUNT = 3;
+
+    public BloodAttack() {
+        super(ID, info, false);
+
+        this.setCustomVar(CustomNames.Cost, COST_PERCENT);
+        this.setCustomVar(CustomNames.Effect1, DAMAGE_PERCENT, DAMAGE_PERCENT_UPGRADE);
+        this.setMagic(SELF_DAMAGE_AMOUNT);
+        this.baseDamage = 0;
+    }
+
+    public void use(AbstractPlayer p, AbstractMonster m) {
+
+        if(m != null)
+            this.addToBot(new VFXAction(new HemokinesisEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.2F));
+
+        this.addToBot(new LoseHPAction(p, p, this.magicNumber));
+
+        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        int carbonCost = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Cost));
+
+        this.calculateCardDamage(m);
+        this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        CarbonManager.removeCurrentCarbon(carbonCost);
+        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.initializeDescription();
+    }
+
+    public void applyPowers() {
+        this.baseDamage = CarbonManager.getCurrentCarbonPercent(this.customVar(CustomNames.Effect1));
+        super.applyPowers();
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
+    }
+
+    public void onMoveToDiscard() {
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.initializeDescription();
+    }
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
+    }
+
+    public AbstractCard makeCopy() {
+        return new BloodAttack();
+    }
+
+}

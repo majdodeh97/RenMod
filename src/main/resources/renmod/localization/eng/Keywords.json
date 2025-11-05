@@ -1,0 +1,87 @@
+[
+  {
+    "PROPER_NAME": "This is displayed in the tooltip.",
+    "NAMES": [
+      "these",
+      "are",
+      "detected",
+      "in",
+      "the",
+      "text"
+    ],
+    "DESCRIPTION": "This is displayed in the tooltip. Spaces should not be used be avoided in NAMES, with the exception of multi-word keywords (see next entry)."
+  },
+  {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "multiword keyword",
+      "multiword_keyword",
+      "multiword_keywords"
+    ],
+    "DESCRIPTION": "Make sure the first element in NAMES has no underscores. The rest should use _ in the place of spaces. In card text, you'll use the underscore versions."
+  },
+  {
+    "PROPER_NAME": "Carbon Capacity",
+    "NAMES": [
+      "Carbon Capacity",
+      "Carbon_Capacity"
+    ],
+    "DESCRIPTION": "Maximum Carbon Capacity. NL NL Gained by killing monsters: NL Basic: 1 Carbon Capacity. NL Elite: 2 Carbon Capacity. NL Boss: 5 Carbon Capacity. NL NL Restore 20% of your Carbon Capacity every turn."
+  },
+  {
+    "PROPER_NAME": "Carbon",
+    "NAMES": [
+      "Carbon",
+      "carbon"
+    ],
+    "DESCRIPTION": "Resource used by various cards. NL NL Restore 20% of your Carbon Capacity every turn."
+  },
+  {
+    "PROPER_NAME": "Siphon",
+    "NAMES": [
+      "Siphon",
+      "siphon"
+    ],
+    "DESCRIPTION": "Regenerate 1 Carbon every turn."
+  },
+  {
+    "PROPER_NAME": "Diamond",
+    "NAMES": [
+      "Diamond",
+      "diamond"
+    ],
+    "DESCRIPTION": "In this #bStance, deal double damage. NL NL Lose 5 HP at the end of your turn."
+  },
+  {
+    "PROPER_NAME": "Graphite",
+    "NAMES": [
+      "Graphite",
+      "graphite"
+    ],
+    "DESCRIPTION": "In this #bStance, 20% of Carbon used is gained as block. NL NL Block is not removed at the start of your turn."
+  },
+  {
+    "PROPER_NAME": "Amorphic",
+    "NAMES": [
+      "Amorphic",
+      "amorphic"
+    ],
+    "DESCRIPTION": "In this #bStance, 20% of Carbon used is gained as health."
+  },
+  {
+    "PROPER_NAME": "Contagion",
+    "NAMES": [
+      "Contagion",
+      "contagion"
+    ],
+    "DESCRIPTION": "Increase Carbon Capacity by 50%. NL NL Start each turn with max Carbon. NL NL Disable Carbon regeneration. NL NL Lose 1 Contagion per turn. NL NL Die when Contagion reaches 0."
+  },
+  {
+    "PROPER_NAME": "Harvest",
+    "NAMES": [
+      "Harvest",
+      "harvest"
+    ],
+    "DESCRIPTION": "Harvested enemies grant double the normal Carbon Capacity increase."
+  }
+]

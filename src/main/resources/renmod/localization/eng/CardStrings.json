@@ -1,0 +1,144 @@
+{
+  "${modID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block. Trigger your passive ${modID}:Carbon regeneration."
+  },
+  "${modID}:RensSword": {
+    "NAME": "Ren's Sword",
+    "DESCRIPTION": "Deal !${modID}:Effect1!% ${modID}:Carbon damage.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:RensShield": {
+    "NAME": "Ren's Shield",
+    "DESCRIPTION": "Gain !${modID}:Effect1!% ${modID}:Carbon as Block.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Gain !B! Block)"
+    ]
+  },
+  "${modID}:BloodCarbon": {
+    "NAME": "Blood Carbon",
+    "DESCRIPTION": "Lose !M! HP NL Restore !${modID}:Effect1!% ${modID}:Carbon_Capacity."
+  },
+  "${modID}:RensDagger": {
+    "NAME": "Ren's Dagger",
+    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:Respite": {
+    "NAME": "Respite",
+    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Draw a card for each !M! ${modID}:Carbon consumed.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Consume ",
+      " ${modID}:Carbon. Draw ",
+      " card(s))"
+    ]
+  },
+  "${modID}:Terror": {
+    "NAME": "Terror",
+    "DESCRIPTION": "Apply !M! Vulnerable and Weak. NL Exhaust."
+  },
+  "${modID}:Siphon": {
+    "NAME": "Siphon",
+    "DESCRIPTION": "Gain !M! ${modID}:Siphon.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! ${modID}:Siphon."
+  },
+  "${modID}:Diamond": {
+    "NAME": "Diamond",
+    "DESCRIPTION": "Innate. NL Ethereal NL Enter ${modID}:Diamond. NL Exhaust."
+  },
+  "${modID}:Graphite": {
+    "NAME": "Graphite",
+    "DESCRIPTION": "Innate. NL Ethereal NL Enter ${modID}:Graphite. NL Exhaust."
+  },
+  "${modID}:Amorphic": {
+    "NAME": "Amorphic",
+    "DESCRIPTION": "Innate. NL Ethereal NL Enter ${modID}:Amorphic. NL Exhaust."
+  },
+  "${modID}:Contagion": {
+    "NAME": "Contagion",
+    "DESCRIPTION": "Retain. NL Lose !${modID}:Magic1! max HP NL Gain max ${modID}:Carbon NL Gain !M! ${modID}:Contagion."
+  },
+  "${modID}:Regenerate": {
+    "NAME": "Regenerate",
+    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Heal for !${modID}:Effect1!% ${modID}:Carbon. NL Exhaust",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Heal ",
+      " HP)"
+    ]
+  },
+  "${modID}:Scraps": {
+    "NAME": "Scraps",
+    "DESCRIPTION": "Deal !${modID}:Effect1!% ${modID}:Carbon damage.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:Bludgeon": {
+    "NAME": "Bludgeon",
+    "DESCRIPTION": "Deal !${modID}:Effect1!% ${modID}:Carbon damage.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:TempoStrike": {
+    "NAME": "Tempo Strike",
+    "DESCRIPTION": "{@@}Consume !${modID}:Cost!% ${modID}:Carbon. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL Draw !M! card{!M!|>1=s}",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:Harvest": {
+    "NAME": "Harvest",
+    "DESCRIPTION": "{@@}{!Upgrades!|>0=Retain. NL }Deal !D! damage. NL If Fatal, ${modID}:Harvest. NL Exhaust."
+  },
+  "${modID}:DomainExpansion": {
+    "NAME": "Domain Expansion",
+    "DESCRIPTION": "At the end of your turn, deal !M!% ${modID}:Carbon damage to all enemies."
+  },
+  "${modID}:WeakSpot": {
+    "NAME": "Weak Spot",
+    "DESCRIPTION": "Deal !D! damage. If the enemy has Weak, apply !M! Vulnerable."
+  },
+  "${modID}:VulnerableSpot": {
+    "NAME": "Vulnerable Spot",
+    "DESCRIPTION": "Deal !D! damage. If the enemy has Vulnerable, apply !M! Weak."
+  },
+  "${modID}:GatheringStorm": {
+    "NAME": "Gathering Storm",
+    "DESCRIPTION": "Retain. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL When this card is retained, increase it's damage by !${modID}:Effect2!% ${modID}:Carbon.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:Leftovers": {
+    "NAME": "Leftovers",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you consume ${modID}:Carbon, return this from the discard pile to your hand."
+  },
+  "${modID}:BloodAttack": {
+    "NAME": "Blood Attack",
+    "DESCRIPTION": "Consume !${modID}:Cost!% ${modID}:Carbon. NL Deal !${modID}:Effect1!% ${modID}:Carbon damage. NL Lose !M! HP.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deal !D! damage)"
+    ]
+  },
+  "${modID}:Reload": {
+    "NAME": "Reload",
+    "DESCRIPTION": "Restore !M! ${modID}:Carbon."
+  },
+  "${modID}:FutureSight": {
+    "NAME": "Future Sight",
+    "DESCRIPTION": "{@@}Consume !${modID}:Cost! ${modID}:Carbon. NL Scry for each ${modID}:Carbon consumed. NL Draw !M! card{!M!|>1=s}.\""
+  },
+  "${modID}:CarbonReserve": {
+    "NAME": "Carbon Reserve",
+    "DESCRIPTION": "Restore !${modID}:Effect1!% ${modID}:Carbon_Capacity. NL Exhaust."
+  }
+}
