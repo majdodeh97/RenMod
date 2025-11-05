@@ -66,6 +66,6 @@ public class Respite extends BaseCarbonCard {
 
     private String createExtraDescription(int cardDraw){
 
-        return cardStrings.EXTENDED_DESCRIPTION[0] + cardDraw + cardStrings.EXTENDED_DESCRIPTION[2];
+        return cardStrings.EXTENDED_DESCRIPTION[0] + cardDraw + cardStrings.EXTENDED_DESCRIPTION[1];
     }
 }

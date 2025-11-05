@@ -36,11 +36,9 @@ Pick 1 to 2 cards from your discard and add them to your hand
 Exhaust a card. Gain mana equal to its cost
 5 mana attack. Deal damage equal to all carbon regenerated
 Exhaust a card, gain carbon
-Gain a flat amount of carbon
-Consume at least 5 carbon, scry for every carbon consumed
 
 ATTACKS
-HIS CARD HAS IMAGE IMPORTED ALREADY
+THIS CARD HAS IMAGE IMPORTED ALREADY CALLED EVISCERATE OR SMTH
 Maybe too hard, but a card like ritual dagger that starts at like 20% scaling and increases the scaling every time it kills an enemy (EternalDagger)
 Flat damage attacks that mix with debuff like weak, vulnerable, taking damage, etc
 
@@ -49,9 +47,10 @@ Cards that exhaust other cards
 
 Maybe make scraps a starter card to remove confusion about cards that scale but dont consume?
 built in call to applyPowers. Call it on all cards in your hand whenever carbon changes
-add block cards lmao
 Art for blood carbon, scraps, and tempostrike and domain expansion
 
 Balances keep an eye out:
 Respite
 Domain expansion
+More Block
+Harvest way too strong

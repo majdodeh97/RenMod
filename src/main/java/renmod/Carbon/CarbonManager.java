@@ -13,8 +13,8 @@ import java.util.List;
 
 public class CarbonManager {
 
-    public static final int BASE_CARBON = 10;
-    public static final int PASSIVE_RESTORE_PERCENT = 20; // Also change hardcoded value in Keywords.json
+    public static final int BASE_CARBON = 20;
+    public static final int PASSIVE_RESTORE_PERCENT = 30; // Also change hardcoded value in Keywords.json
     public static final int CONTAGION_PERCENT_INCREASE = 50; // Also change hardcoded value in Keywords.json
 
     public static final int ROOM_INCREASE = 1; // Also change hardcoded text in Keywords.json and CarbonRender.java

@@ -26,7 +26,7 @@
       "Carbon Capacity",
       "Carbon_Capacity"
     ],
-    "DESCRIPTION": "Maximum Carbon Capacity. NL NL Gained by killing monsters: NL Basic: 1 Carbon Capacity. NL Elite: 2 Carbon Capacity. NL Boss: 5 Carbon Capacity. NL NL Restore 20% of your Carbon Capacity every turn."
+    "DESCRIPTION": "Maximum Carbon Capacity. NL NL Gained by killing monsters: NL Basic: 1 Carbon Capacity. NL Elite: 2 Carbon Capacity. NL Boss: 5 Carbon Capacity. NL NL Restore 30% of your Carbon Capacity every turn."
   },
   {
     "PROPER_NAME": "Carbon",
@@ -34,7 +34,7 @@
       "Carbon",
       "carbon"
     ],
-    "DESCRIPTION": "Resource used by various cards. NL NL Restore 20% of your Carbon Capacity every turn."
+    "DESCRIPTION": "Resource used by various cards. NL NL Restore 30% of your Carbon Capacity every turn."
   },
   {
     "PROPER_NAME": "Siphon",

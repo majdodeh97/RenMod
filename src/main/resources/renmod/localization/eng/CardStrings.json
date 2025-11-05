@@ -139,5 +139,23 @@
   "${modID}:CarbonReserve": {
     "NAME": "Carbon Reserve",
     "DESCRIPTION": "Restore !${modID}:Effect1!% ${modID}:Carbon_Capacity. NL Exhaust."
+  },
+  "${modID}:Protect": {
+    "NAME": "Protect",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${modID}:Prepare": {
+    "NAME": "Prepare",
+    "DESCRIPTION": "Next turn, gain !${modID}:Effect1!% ${modID}:Carbon as Block.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Gain !B! Block)"
+    ]
+  },
+  "${modID}:RensBuckler": {
+    "NAME": "Ren's Buckler",
+    "DESCRIPTION": "Gain !${modID}:Effect1!% ${modID}:Carbon as Block.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Gain !B! Block)"
+    ]
   }
 }

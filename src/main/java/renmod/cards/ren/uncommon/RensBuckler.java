@@ -1,0 +1,73 @@
+package renmod.cards.ren.uncommon;
+
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import renmod.Carbon.CarbonManager;
+import renmod.Carbon.CustomNames;
+import renmod.CustomCharacter.RenCharacter;
+import renmod.cards.ren.BaseCarbonCard;
+import renmod.util.CardStats;
+
+public class RensBuckler extends BaseCarbonCard {
+
+    public static final String ID = makeID("RensBuckler");
+    private static final CardStats info = new CardStats(
+            RenCharacter.Meta.CARD_COLOR,
+            CardType.SKILL,
+            CardRarity.UNCOMMON,
+            CardTarget.SELF,
+            0
+    );
+    private static final int BLOCK_PERCENT = 50;
+    private static final int BLOCK_PERCENT_UPGRADE = 50;
+    private static final int COST_PERCENT = 50;
+
+    public RensBuckler() {
+        super(ID, info, false);
+
+        this.setCustomVar(CustomNames.Effect1, BLOCK_PERCENT, BLOCK_PERCENT_UPGRADE);
+        this.baseBlock = 0;
+        this.setCarbonCost(COST_PERCENT);
+    }
+
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
+
+        this.calculateCardDamage(m);
+        this.addToBot(new GainBlockAction(p, p, this.block));
+
+        this.consumeCarbonCost();
+
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.initializeDescription();
+
+    }
+
+    public void applyPowers() {
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
+        super.applyPowers();
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
+    }
+
+    public void onMoveToDiscard() {
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.initializeDescription();
+    }
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
+    }
+
+    public AbstractCard makeCopy() {
+        return new RensBuckler();
+    }
+
+}

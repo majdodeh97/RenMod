@@ -1,58 +1,56 @@
-package renmod.cards.ren.common;
+package renmod.cards.ren.uncommon;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
-import renmod.cards.BaseCard;
 import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class TempoStrike extends BaseCarbonCard {
+public class Prepare extends BaseCarbonCard {
 
-    public static final String ID = makeID("TempoStrike");
+    public static final String ID = makeID("Prepare");
     private static final CardStats info = new CardStats(
             RenCharacter.Meta.CARD_COLOR,
-            CardType.ATTACK,
+            CardType.SKILL,
             CardRarity.UNCOMMON,
-            CardTarget.ENEMY,
+            CardTarget.SELF,
             1
     );
-    private static final int COST_PERCENT = 20;
-    private static final int DAMAGE_PERCENT = 20;
+    private static final int BLOCK_PERCENT = 50;
+    private static final int COST_PERCENT = 40;
+    private static final int COST_PERCENT_UPGRADE = 20;
 
-    public TempoStrike() {
-        super(ID, info, true);
+    public Prepare() {
+        super(ID, info, false);
 
-        this.setCustomVar(CustomNames.Cost, COST_PERCENT);
-        this.setCustomVar(CustomNames.Effect1, DAMAGE_PERCENT);
-        this.setMagic(1,1);
-        this.baseDamage = 0;
-        this.setCarbonCost(COST_PERCENT);
+        this.setCustomVar(CustomNames.Effect1, BLOCK_PERCENT);
+        this.baseBlock = 0;
+        this.setCarbonCost(COST_PERCENT, -COST_PERCENT_UPGRADE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
 
         this.calculateCardDamage(m);
-        this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        this.addToBot(new DrawCardAction(p, this.magicNumber));
+
+        this.addToBot(new ApplyPowerAction(p, p, new NextTurnBlockPower(p, this.block), this.block));
 
         this.consumeCarbonCost();
 
-        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Cost));
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         this.rawDescription = cardStrings.DESCRIPTION;
         this.initializeDescription();
+
     }
 
     public void applyPowers() {
-        this.baseDamage = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Cost));
+        this.baseBlock = CarbonManager.getConsumeCarbonAmount(this.customVar(CustomNames.Effect1));
         super.applyPowers();
         this.rawDescription = cardStrings.DESCRIPTION;
         this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
@@ -72,7 +70,7 @@ public class TempoStrike extends BaseCarbonCard {
     }
 
     public AbstractCard makeCopy() {
-        return new TempoStrike();
+        return new Prepare();
     }
 
 }
