@@ -38,14 +38,14 @@ Exhaust a card. Gain mana equal to its cost
 Exhaust a card, gain carbon
 
 ATTACKS
-THIS CARD HAS IMAGE IMPORTED ALREADY CALLED EVISCERATE OR SMTH
+THIS CARD HAS IMAGE IMPORTED ALREADY CALLED EternalDagger OR SMTH
 Maybe too hard, but a card like ritual dagger that starts at like 20% scaling and increases the scaling every time it kills an enemy (EternalDagger)
 Flat damage attacks that mix with debuff like weak, vulnerable, taking damage, etc
+Card that increases damage based on how much carbon is consumed that turn. Maybe make it retain
 
 AOE Attacks
 Cards that exhaust other cards
 
-Maybe make scraps a starter card to remove confusion about cards that scale but dont consume?
 built in call to applyPowers. Call it on all cards in your hand whenever carbon changes
 Art for blood carbon, scraps, and tempostrike and domain expansion
 
