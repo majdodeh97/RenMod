@@ -6,10 +6,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.powers.ren.DomainExpansionPower;
 import renmod.util.CardStats;
 
-public class DomainExpansion extends BaseCard {
+public class DomainExpansion extends BaseCarbonCard {
 
     public static final String ID = makeID("DomainExpansion");
     private static final CardStats info = new CardStats(

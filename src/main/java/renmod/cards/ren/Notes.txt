@@ -54,3 +54,4 @@ Respite
 Domain expansion
 More Block
 Harvest way too strong
+fix Problem with people not realizing the number is cost

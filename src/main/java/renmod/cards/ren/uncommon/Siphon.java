@@ -6,10 +6,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.powers.ren.SiphonPower;
 import renmod.util.CardStats;
 
-public class Siphon extends BaseCard {
+public class Siphon extends BaseCarbonCard {
 
     public static final String ID = makeID("Siphon");
     private static final CardStats info = new CardStats(

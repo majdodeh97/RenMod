@@ -12,9 +12,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.Carbon.CarbonManager;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Leftovers extends BaseCard {
+public class Leftovers extends BaseCarbonCard {
 
     public static final String ID = makeID("Leftovers");
     private static final CardStats info = new CardStats(

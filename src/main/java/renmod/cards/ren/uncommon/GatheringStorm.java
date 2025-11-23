@@ -10,9 +10,10 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class GatheringStorm extends BaseCard {
+public class GatheringStorm extends BaseCarbonCard {
 
     public static final String ID = makeID("GatheringStorm");
     private static final CardStats info = new CardStats(

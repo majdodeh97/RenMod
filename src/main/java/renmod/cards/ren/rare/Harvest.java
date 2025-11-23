@@ -11,10 +11,11 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.cards.ren.actions.HarvestAction;
 import renmod.util.CardStats;
 
-public class Harvest extends BaseCard {
+public class Harvest extends BaseCarbonCard {
 
     public static final String ID = makeID("Harvest");
     private static final CardStats info = new CardStats(

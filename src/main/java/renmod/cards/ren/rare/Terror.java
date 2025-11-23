@@ -8,9 +8,10 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Terror extends BaseCard {
+public class Terror extends BaseCarbonCard {
 
     public static final String ID = makeID("Terror");
     private static final CardStats info = new CardStats(

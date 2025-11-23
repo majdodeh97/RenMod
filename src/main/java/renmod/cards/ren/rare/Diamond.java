@@ -10,9 +10,10 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import renmod.Carbon.CarbonManager;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Diamond extends BaseCard {
+public class Diamond extends BaseCarbonCard {
 
     public static final String ID = makeID("Diamond");
     private static final CardStats info = new CardStats(

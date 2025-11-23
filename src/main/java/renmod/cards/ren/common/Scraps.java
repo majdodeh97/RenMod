@@ -10,9 +10,10 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Scraps extends BaseCard {
+public class Scraps extends BaseCarbonCard {
 
     public static final String ID = makeID("Scraps");
     private static final CardStats info = new CardStats(

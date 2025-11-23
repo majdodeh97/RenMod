@@ -6,9 +6,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Amorphic extends BaseCard {
+public class Amorphic extends BaseCarbonCard {
 
     public static final String ID = makeID("Amorphic");
     private static final CardStats info = new CardStats(

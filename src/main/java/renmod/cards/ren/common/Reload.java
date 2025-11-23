@@ -7,9 +7,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import renmod.Carbon.CarbonManager;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class Reload extends BaseCard {
+public class Reload extends BaseCarbonCard {
 
     public static final String ID = makeID("Reload");
     private static final CardStats info = new CardStats(

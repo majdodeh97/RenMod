@@ -7,9 +7,10 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class CarbonReserve extends BaseCard {
+public class CarbonReserve extends BaseCarbonCard {
 
     public static final String ID = makeID("CarbonReserve");
     private static final CardStats info = new CardStats(

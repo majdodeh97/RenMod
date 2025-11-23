@@ -10,11 +10,12 @@ import renmod.Carbon.CarbonManager;
 import renmod.Carbon.CustomNames;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.powers.ren.ContagionPower;
 import renmod.powers.ren.SiphonPower;
 import renmod.util.CardStats;
 
-public class Contagion extends BaseCard {
+public class Contagion extends BaseCarbonCard {
 
     public static final String ID = makeID("Contagion");
     private static final CardStats info = new CardStats(

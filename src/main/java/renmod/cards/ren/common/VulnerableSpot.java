@@ -11,9 +11,10 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.cards.ren.BaseCarbonCard;
 import renmod.util.CardStats;
 
-public class VulnerableSpot extends BaseCard {
+public class VulnerableSpot extends BaseCarbonCard {
 
     public static final String ID = makeID("VulnerableSpot");
     private static final CardStats info = new CardStats(
