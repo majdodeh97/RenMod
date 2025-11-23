@@ -37,7 +37,7 @@ public class Leftovers extends BaseCarbonCard {
     }
 
     @Override
-    public void onCarbonConsumed(float amount) {
+    public void onCarbonConsumed_Discard(float amount) {
         this.addToBot(new DiscardToHandAction(this));
     }
 

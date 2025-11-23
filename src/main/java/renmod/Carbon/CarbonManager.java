@@ -3,10 +3,12 @@ package renmod.Carbon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.stances.AbstractStance;
 import org.apache.logging.log4j.Level;
 import renmod.BasicMod;
 import renmod.CustomCharacter.RenCharacter;
 import renmod.cards.BaseCard;
+import renmod.stances.BaseStance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,6 @@ public class CarbonManager {
     public static final int MONSTER_INCREASE = 1; // Also change hardcoded value in Keywords.json
     public static final int ELITE_INCREASE = 2; // Also change hardcoded value in Keywords.json
     public static final int BOSS_INCREASE = 5; // Also change hardcoded value in Keywords.json
-
-    private static final List<CarbonDecreasedListener> carbonDecreasedListeners = new ArrayList<>();
 
     // Public
 
@@ -243,7 +243,6 @@ public class CarbonManager {
             //addMaxCarbon(ROOM_INCREASE);
             setContagion(false);
             setCurrentCarbon(0, true);
-            carbonDecreasedListeners.clear();
         }
     }
 
@@ -255,27 +254,33 @@ public class CarbonManager {
 
     // Listeners
 
-    public static void addCarbonDecreasedListener(CarbonDecreasedListener listener) {
-        carbonDecreasedListeners.add(listener);
-    }
-
-    public static void removeCarbonDecreasedListener(CarbonDecreasedListener listener) {
-        carbonDecreasedListeners.remove(listener);
-    }
-
     private static void notifyCarbonDecreased(float amount) {
-        for (CarbonDecreasedListener listener : carbonDecreasedListeners) {
-            listener.onCarbonDecreased(amount);
-        }
-
         for (AbstractCard c : AbstractDungeon.player.discardPile.group){
             if(c instanceof BaseCard){
-                ((BaseCard)c).onCarbonConsumed(amount);
+                ((BaseCard)c).onCarbonConsumed_Discard(amount);
             }
         }
-    }
 
-    public interface CarbonDecreasedListener {
-        void onCarbonDecreased(float amount);
+        for (AbstractCard c : AbstractDungeon.player.hand.group){
+            if(c instanceof BaseCard){
+                ((BaseCard)c).onCarbonConsumed_Hand(amount);
+            }
+        }
+
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
+            if(c instanceof BaseCard){
+                ((BaseCard)c).onCarbonConsumed_Exhaust(amount);
+            }
+        }
+
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group){
+            if(c instanceof BaseCard){
+                ((BaseCard)c).onCarbonConsumed_Draw(amount);
+            }
+        }
+
+        if(AbstractDungeon.player.stance instanceof BaseStance){
+            ((BaseStance)AbstractDungeon.player.stance).onCarbonConsumed(amount);
+        }
     }
 }

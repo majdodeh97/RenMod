@@ -12,18 +12,15 @@ import renmod.stances.effects.CustomParticleEffect;
 
 import static renmod.BasicMod.makeID;
 
-public class Amorphic extends AbstractStance {
+public class Amorphic extends BaseStance {
     public static final String STANCE_ID = makeID("AmorphicStance");
 
     private static final int HEAL_PERCENTAGE = 20; // Also change hardcoded value in Keywords.json
-
-    private final AmorphicCarbonDecreasedListener listener;
 
     public Amorphic() {
         this.ID = STANCE_ID;
         this.name = "Amorphic";
         this.updateDescription();
-        listener = new AmorphicCarbonDecreasedListener(HEAL_PERCENTAGE);
     }
 
     @Override
@@ -43,27 +40,12 @@ public class Amorphic extends AbstractStance {
 
     public void onEnterStance() {
         CardCrawlGame.sound.play("STANCE_ENTER_DIVINITY");
-        CarbonManager.addCarbonDecreasedListener(listener);
     }
 
     @Override
-    public void onExitStance() {
-        CarbonManager.removeCarbonDecreasedListener(listener);
-    }
-
-    private class AmorphicCarbonDecreasedListener implements CarbonManager.CarbonDecreasedListener {
-
-        private final int healPercentage;
-
-        public AmorphicCarbonDecreasedListener(int healPercentage){
-            this.healPercentage = healPercentage;
-        }
-
-        @Override
-        public void onCarbonDecreased(float amount) {
-            float decimal = healPercentage / 100.0f;
-            int healAmount = (int)Math.ceil(decimal * amount);
-            AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player, AbstractDungeon.player, healAmount));
-        }
+    public void onCarbonConsumed(float amount) {
+        float decimal = HEAL_PERCENTAGE / 100.0f;
+        int healAmount = (int)Math.ceil(decimal * amount);
+        AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player, AbstractDungeon.player, healAmount));
     }
 }

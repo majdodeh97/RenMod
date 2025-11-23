@@ -20,7 +20,7 @@ import renmod.stances.effects.CustomStanceAuraEffect;
 
 import static renmod.BasicMod.makeID;
 
-public class Diamond extends AbstractStance {
+public class Diamond extends BaseStance {
     public static final String STANCE_ID = makeID("DiamondStance");
 
     private static final int DAMAGE_PER_TURN = 5; // Also change hardcoded value in Keywords.json

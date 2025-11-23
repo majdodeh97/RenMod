@@ -135,7 +135,19 @@ public abstract class BaseCard extends CustomCard {
         }
     }
 
-    public void onCarbonConsumed(float amount){
+    public void onCarbonConsumed_Discard(float amount){
+
+    }
+
+    public void onCarbonConsumed_Hand(float amount){
+
+    }
+
+    public void onCarbonConsumed_Draw(float amount){
+
+    }
+
+    public void onCarbonConsumed_Exhaust(float amount){
 
     }
 

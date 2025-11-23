@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,18 +21,15 @@ import renmod.stances.effects.CustomStanceAuraEffect;
 
 import static renmod.BasicMod.makeID;
 
-public class Graphite extends AbstractStance {
+public class Graphite extends BaseStance {
     public static final String STANCE_ID = makeID("GraphiteStance");
 
     private static final int BLOCK_PERCENTAGE = 20; // Also change hardcoded value in Keywords.json
-
-    private final GraphiteCarbonDecreasedListener listener;
 
     public Graphite() {
         this.ID = STANCE_ID;
         this.name = "Graphite";
         this.updateDescription();
-        listener = new GraphiteCarbonDecreasedListener(BLOCK_PERCENTAGE);
     }
 
     @Override
@@ -51,27 +49,12 @@ public class Graphite extends AbstractStance {
 
     public void onEnterStance() {
         CardCrawlGame.sound.play("STANCE_ENTER_DIVINITY");
-        CarbonManager.addCarbonDecreasedListener(listener);
     }
 
     @Override
-    public void onExitStance() {
-        CarbonManager.removeCarbonDecreasedListener(listener);
-    }
-
-    private class GraphiteCarbonDecreasedListener implements CarbonManager.CarbonDecreasedListener {
-
-        private final int blockPercentage;
-
-        public GraphiteCarbonDecreasedListener(int blockPercentages){
-            blockPercentage = blockPercentages;
-        }
-
-        @Override
-        public void onCarbonDecreased(float amount) {
-            float decimal = blockPercentage / 100.0f;
-            int blockAmount = (int)Math.ceil(decimal * amount);
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, blockAmount));
-        }
+    public void onCarbonConsumed(float amount) {
+        float decimal = BLOCK_PERCENTAGE / 100.0f;
+        int blockAmount = (int)Math.ceil(decimal * amount);
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, blockAmount));
     }
 }
