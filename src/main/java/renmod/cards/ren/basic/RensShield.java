@@ -23,14 +23,14 @@ public class RensShield extends BaseCarbonCard {
     );
     private static final int BLOCK_PERCENT = 100;
     private static final int COST_PERCENT = 100;
+    private static final int COST_PERCENT_UPGRADE = -50;
 
     public RensShield() {
         super(ID, info, false);
 
         this.setCustomVar(CustomNames.Effect1, BLOCK_PERCENT);
-        this.setCostUpgrade(0);
         this.baseBlock = 0;
-        this.setCarbonCost(COST_PERCENT);
+        this.setCarbonCost(COST_PERCENT, COST_PERCENT_UPGRADE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

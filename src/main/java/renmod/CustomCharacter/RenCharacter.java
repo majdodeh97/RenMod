@@ -22,6 +22,7 @@ import renmod.cards.ren.basic.Strike;
 import renmod.cards.ren.basic.Defend;
 import renmod.cards.ren.basic.RensShield;
 import renmod.cards.ren.basic.RensSword;
+import renmod.cards.ren.common.Scraps;
 import renmod.cards.ren.rare.*;
 import renmod.relics.RenRelic;
 
@@ -237,8 +238,8 @@ public class RenCharacter extends CustomPlayer{
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(RensSword.ID);
-        retVal.add(RensSword.ID);
         retVal.add(RensShield.ID);
+        retVal.add(Scraps.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);

@@ -28,14 +28,14 @@ public class RensSword extends BaseCarbonCard {
     );
     private static final int DAMAGE_PERCENT = 100;
     private static final int COST_PERCENT = 100;
+    private static final int COST_PERCENT_UPGRADE = -50;
 
     public RensSword() {
         super(ID, info, false);
 
         this.setCustomVar(CustomNames.Effect1, DAMAGE_PERCENT);
-        this.setCostUpgrade(0);
         this.baseDamage = 0;
-        this.setCarbonCost(COST_PERCENT);
+        this.setCarbonCost(COST_PERCENT, COST_PERCENT_UPGRADE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
